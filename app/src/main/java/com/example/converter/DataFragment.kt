@@ -50,6 +50,7 @@ class DataFragment : Fragment() {
         editTextInput = view.findViewById(R.id.editTextInputDecimal)
         editTextInput.setShowSoftInputOnFocus(false)
 
+
     }
 
     companion object {

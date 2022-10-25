@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +22,20 @@ class KeyboardFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    // keyboard keys (buttons)
+    private var mButton1: Button? = null
+    private var mButton2: Button? = null
+    private var mButton3: Button? = null
+    private var mButton4: Button? = null
+    private var mButton5: Button? = null
+    private var mButton6: Button? = null
+    private var mButton7: Button? = null
+    private var mButton8: Button? = null
+    private var mButton9: Button? = null
+    private var mButton0: Button? = null
+    private var mButtonDelete: Button? = null
+    private var mButtonDot: Button? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -35,6 +50,12 @@ class KeyboardFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_keyboard, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
     }
 
     companion object {
