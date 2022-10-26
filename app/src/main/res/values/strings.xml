@@ -19,4 +19,21 @@
     <string name="m_per_s">m/s</string>
     <string name="mm_per_s">mm/s</string>
 
+    <string-array name="distanceUnits">
+        <item key = "cm">@string/cm</item>
+        <item  key = "m">@string/m</item>
+        <item  key = "km">@string/km</item>
+        <item key = "mm">@string/mm</item>
+    </string-array>
+    <string-array name="weightUnits">
+        <item key = "kg">@string/kg</item>
+        <item key = "g">@string/g</item>
+        <item key = "t">@string/t</item>
+    </string-array>
+    <string-array name="speedUnits">
+        <item key = "km/s">@string/km_per_s</item>
+        <item key = "m/s">@string/m_per_s</item>
+        <item key = "mm/s">@string/mm_per_s</item>
+    </string-array>
+
 </resources>

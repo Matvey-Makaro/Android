@@ -11,12 +11,11 @@
         android:name="com.example.converter.DataFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/fragmentContainerView7"
+        app:layout_constraintBottom_toTopOf="@+id/fragmentContainerKeyboard"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.186"
+        app:layout_constraintVertical_bias="0.164"
         tools:layout="@layout/fragment_data" />
 
     <androidx.fragment.app.FragmentContainerView
