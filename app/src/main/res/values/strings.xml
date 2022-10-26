@@ -18,6 +18,11 @@
     <string name="km_per_s">km/s</string>
     <string name="m_per_s">m/s</string>
     <string name="mm_per_s">mm/s</string>
+    <string name="swap">swap</string>
+    <string name="copy">copy</string>
+    <string name="paste">paste</string>
+    <string name="dot">.</string>
+    <string name="del">Del</string>
 
     <string-array name="distanceUnits">
         <!-- <item key="cm">@string/cm</item> !-->
