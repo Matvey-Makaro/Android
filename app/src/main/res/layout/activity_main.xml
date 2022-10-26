@@ -7,7 +7,7 @@
     tools:context=".MainActivity">
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView6"
+        android:id="@+id/fragmentContainerData"
         android:name="com.example.converter.DataFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
         tools:layout="@layout/fragment_data" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView7"
+        android:id="@+id/fragmentContainerKeyboard"
         android:name="com.example.converter.KeyboardFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
