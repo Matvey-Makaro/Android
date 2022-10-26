@@ -8,7 +8,7 @@
     <string name="weight"> weight</string>
     <string name="speed"> speed</string>
 
-    <string name="cm">cm</string>
+    <!-- <string name="cm">cm</string> !-->
     <string name="m">m</string>
     <string name="km">km</string>
     <string name="mm">mm</string>
@@ -20,7 +20,7 @@
     <string name="mm_per_s">mm/s</string>
 
     <string-array name="distanceUnits">
-        <item key="cm">@string/cm</item>
+        <!-- <item key="cm">@string/cm</item> !-->
         <item key="m">@string/m</item>
         <item key="km">@string/km</item>
         <item key="mm">@string/mm</item>

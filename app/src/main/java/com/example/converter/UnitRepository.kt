@@ -36,6 +36,16 @@ object UnitRepository
         )
     }
 
+    private val allUnits: List<Unit> by lazy {
+        groupToUnits.values.flatten()
+    }
+
+    fun getUnitById(name: Int): Unit
+    {
+        return allUnits.first { ((it.Name)) == name }
+    }
+
+
     fun getUnitsByGroup(unitGroup: UnitGroup) : List<com.example.converter.Unit>
     {
         return groupToUnits.getValue(unitGroup)

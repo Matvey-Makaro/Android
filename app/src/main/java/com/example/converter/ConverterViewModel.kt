@@ -1,10 +1,12 @@
 package com.example.converter
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import java.math.BigDecimal
 import java.math.RoundingMode
 
-class ConverterViewModel {
+class ConverterViewModel : ViewModel()
+{
     var valueFrom : MutableLiveData<BigDecimal> = MutableLiveData()
     var valueTo : MutableLiveData<BigDecimal> = MutableLiveData()
     var unitFrom : MutableLiveData<Unit> = MutableLiveData()
