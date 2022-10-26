@@ -2,4 +2,21 @@
     <string name="app_name">Converter</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="selected_item">Selected item:</string>
+    <string name="distance"> distance</string>
+    <string name="weight"> weight</string>
+    <string name="speed"> speed</string>
+
+    <string name="cm">cm</string>
+    <string name="m">m</string>
+    <string name="km">km</string>
+    <string name="mm">mm</string>
+    <string name="kg">kg</string>
+    <string name="g">g</string>
+    <string name="t">t</string>
+    <string name="km_per_s">km/s</string>
+    <string name="m_per_s">m/s</string>
+    <string name="mm_per_s">mm/s</string>
+
 </resources>
