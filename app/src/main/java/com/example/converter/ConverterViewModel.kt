@@ -25,9 +25,10 @@ class ConverterViewModel : ViewModel()
         if(unitFrom.value!!.group != unitTo.value!!.group)
             return;
 
-        var diff = unitFrom.value!!.multiplier.divide(unitTo.value!!.multiplier, 50, RoundingMode.HALF_UP)
+        val coeffFrom = unitFrom.value!!.multiplier
+        val coeffTo = unitTo.value!!.multiplier
+        valueTo.value = valueFrom.value?.multiply(BigDecimal(coeffFrom))!!.divide(BigDecimal(coeffTo)).stripTrailingZeros()
 
-        valueTo.value = valueFrom.value?.multiply(diff)?.stripTrailingZeros()
     }
 
     fun setValueFrom(value: BigDecimal)

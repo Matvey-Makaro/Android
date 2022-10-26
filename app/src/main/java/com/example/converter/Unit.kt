@@ -5,6 +5,6 @@ import java.math.BigDecimal
 
 data class Unit(
     @StringRes val Name: Int,
-    var multiplier: BigDecimal,
+    var multiplier: Int,
     val group: UnitGroup
 )
