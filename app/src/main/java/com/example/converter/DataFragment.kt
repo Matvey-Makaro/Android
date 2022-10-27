@@ -80,9 +80,12 @@ class DataFragment : Fragment() {
                 return false
             }
         }
+        editTextInput.isLongClickable = false
+        editTextInput.setTextIsSelectable(false)
 
         val textViewOutput = view.findViewById<TextView>(R.id.text_view_output)
-        textViewOutput.isVerticalScrollBarEnabled = true
+        // textViewOutput.isVerticalScrollBarEnabled = true
+        textViewOutput.isHorizontalScrollBarEnabled = true
         textViewOutput.movementMethod = ScrollingMovementMethod()
         textViewOutput.maxLines = 1
 
