@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    app:cardForegroundColor="#00CA2C2C"
+    app:strokeColor="#FFFFFF">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/intervalConstraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+
+        <EditText
+            android:id="@+id/descriptionEditText"
+            android:layout_width="297dp"
+            android:layout_height="58dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="5dp"
+            android:text="Описание"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/intervalTimeTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/intervalNumberTextView"
+            android:layout_width="42dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="16dp"
+            android:text="25"
+            android:textColor="#0033FF"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/timerImagToIntervalCount"
+            android:layout_width="44dp"
+            android:layout_height="43dp"
+            android:contentDescription="TODO"
+            app:layout_constraintBottom_toBottomOf="@+id/intervalNumberTextView"
+            app:layout_constraintStart_toEndOf="@+id/intervalNumberTextView"
+            app:srcCompat="@drawable/ic_baseline_timer_24" />
+
+        <ImageView
+            android:id="@+id/additionalSpinImageSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="28dp"
+            android:layout_marginBottom="64dp"
+            app:layout_constraintBottom_toTopOf="@+id/timerImagToIntervalCount"
+            app:layout_constraintStart_toEndOf="@+id/intervalNumberTextView"
+            app:srcCompat="@drawable/ic_baseline_more_vert_24" />
+
+        <TextView
+            android:id="@+id/intervalTimeTextView"
+            android:layout_width="285dp"
+            android:layout_height="38dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="2dp"
+            android:text="10"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/addTimeButton"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="46dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/sml_rounded_button"
+            app:icon="@drawable/ic_baseline_add_24"
+            app:layout_constraintEnd_toEndOf="@+id/intervalTimeTextView"
+            app:layout_constraintTop_toTopOf="@+id/intervalTimeTextView"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <Button
+            android:id="@+id/decTimeButton"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="45dp"
+            android:layout_height="31dp"
+            android:layout_marginTop="7dp"
+            android:background="@drawable/sml_rounded_button"
+            app:icon="@drawable/ic_baseline_remove_24"
+            app:layout_constraintStart_toStartOf="@+id/intervalTimeTextView"
+            app:layout_constraintTop_toTopOf="@+id/intervalTimeTextView"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <Spinner
+            android:id="@+id/chgIntervalTypeSpinner"
+            style="@style/Widget.AppCompat.Spinner"
+            android:layout_width="53dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/ic_baseline_delete_outline_24"
+            android:visibility="visible"
+            app:layout_constraintBottom_toTopOf="@+id/timerImagToIntervalCount"
+            app:layout_constraintStart_toStartOf="@+id/intervalNumberTextView"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/curIntervalTypeTextView"
+            android:layout_width="241dp"
+            android:layout_height="41dp"
+            android:layout_marginEnd="54dp"
+            android:layout_marginBottom="1dp"
+            android:text="Отдых"
+            android:textAlignment="center"
+            android:textColor="#0033FF"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/descriptionEditText"
+            app:layout_constraintEnd_toEndOf="@+id/descriptionEditText" />
+
+        <Spinner
+            android:id="@+id/addSpinner"
+            style="@style/Widget.AppCompat.Spinner"
+            android:layout_width="45dp"
+            android:layout_height="47dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/ic_baseline_add_for_spinner"
+            app:layout_constraintBottom_toTopOf="@+id/descriptionEditText"
+            app:layout_constraintStart_toEndOf="@+id/curIntervalTypeTextView"
+            tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

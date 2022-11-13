@@ -14,4 +14,10 @@
         <item>Delete</item>
     </string-array>
 
+    <string-array name="add_interval_up_down">
+        <item> </item>
+        <item>Add interval higher</item>
+        <item>Add interval lower</item>
+    </string-array>
+
 </resources>

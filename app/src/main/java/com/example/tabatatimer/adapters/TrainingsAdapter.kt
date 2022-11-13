@@ -3,6 +3,7 @@ package com.example.tabatatimer.adapters
 import android.content.Context
 import android.graphics.Color
 import android.text.method.ScrollingMovementMethod
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,7 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tabatatimer.MainActivity
 import com.example.tabatatimer.R
+import com.example.tabatatimer.database.models.Training
 import com.example.tabatatimer.viewmodels.TrainingsViewModel
 
 class TrainingsAdapter(
@@ -56,7 +58,32 @@ class TrainingsAdapter(
         }
 
         holder.deleteTrainingBtn.setOnClickListener{
-            // TODO: Написать обработчик
+            trainingWithIntervals = trainingsViewModel.trainingWithIntervals.
+            find { it.id == trainingWithIntervals.id }!!
+
+            var pos: Int = 0
+            for(i in trainingsViewModel.trainingWithIntervals)
+            {
+                if(i.id == trainingWithIntervals.id)
+                    break
+                pos++
+            }
+
+            var dao = trainingsViewModel.dao
+
+            trainingsViewModel.trainingWithIntervals.remove(trainingWithIntervals)
+            dao?.deleteTraining(Training(
+                trainingWithIntervals.id,
+                trainingWithIntervals.repeats,
+                trainingWithIntervals.color,
+                trainingWithIntervals.name,
+                trainingWithIntervals.soundEffect
+            ))
+
+            for(i in dao?.getTrainingsIntervals(trainingWithIntervals.id)!!)
+                dao?.deleteInterval(i)
+
+            notifyItemRemoved(pos)
         }
 
         holder.intervalsInfo.movementMethod = ScrollingMovementMethod()
@@ -69,6 +96,18 @@ class TrainingsAdapter(
         holder.startTrainingBtn.setBackgroundColor(Color.parseColor(hex))
         holder.settingsTrainingBtn.setBackgroundColor(Color.parseColor(hex))
 
+        if (font == "1")
+        {
+            holder.trainingsName.setTextSize(TypedValue.COMPLEX_UNIT_PX, holder.trainingsName.textSize * (0.5).toFloat())
+            holder.intervalsInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX, holder.intervalsInfo.textSize * (0.5).toFloat())
+            holder.overralTraining.setTextSize(TypedValue.COMPLEX_UNIT_PX, holder.overralTraining.textSize * (0.5).toFloat())
+        }
+        else if (font == "3")
+        {
+            holder.trainingsName.setTextSize(TypedValue.COMPLEX_UNIT_PX, holder.trainingsName.textSize * (1.5).toFloat())
+            holder.intervalsInfo.setTextSize(TypedValue.COMPLEX_UNIT_PX, holder.intervalsInfo.textSize * (1.5).toFloat())
+            holder.overralTraining.setTextSize(TypedValue.COMPLEX_UNIT_PX, holder.overralTraining.textSize * (1.5).toFloat())
+        }
     }
 
     override fun getItemCount(): Int
