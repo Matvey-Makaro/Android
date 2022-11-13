@@ -24,7 +24,7 @@ interface TrainingDao
     fun deleteTraining(training: Training)
 
     @Query("SELECT * FROM interval")
-    fun getAllIntervals()
+    fun getAllIntervals() : List<Interval>
 
     @Query("SELECT * FROM training")
     fun getAllTrainings() : List<Training>
