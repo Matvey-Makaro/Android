@@ -6,12 +6,13 @@ import com.example.tabatatimer.database.AppDatabase
 import com.example.tabatatimer.database.models.TrainingDao
 import com.example.tabatatimer.database.models.TrainingWithIntervals
 
-class TrainingsViewModel(application: Application) : ViewModel()
+class TrainingsViewModel() : ViewModel()
 {
     var dao: TrainingDao? = null
     var trainingWithIntervals: MutableList<TrainingWithIntervals> = mutableListOf()
 
-    init {
+    fun initVars(application: Application)
+    {
         dao = AppDatabase.getDatabase(application).trainingDao()
         trainingWithIntervals = dao!!.getJoined()
     }

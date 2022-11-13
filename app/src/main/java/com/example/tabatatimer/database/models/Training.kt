@@ -1,9 +1,12 @@
 package com.example.tabatatimer.database.models
 
+import android.content.Context
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.tabatatimer.R
+import kotlin.math.min
 
 enum class TrainingActionType
 {
@@ -52,5 +55,54 @@ class TrainingWithIntervals(
     fun getIntervalsNum() : Int
     {
         return intervals.size
+    }
+
+    fun getPrettyIntervals(context: Context, font:String): String
+    {
+        var result: String = ""
+
+        val mx : Int = when (font) {
+            "1" -> 10
+            "3" -> 3
+            else -> 4
+        }
+
+        for (i in (0..min(mx, intervals.size - 1))) {
+            result += String.format("%02d. %s", i + 1, context.resources.
+            getStringArray(R.array.interval_types)[intervals[i].actionType.ordinal + 1])
+            result += "\n"
+        }
+
+        if (intervals.size > 5)
+            result += "..."
+
+        return result
+    }
+
+    companion object{
+        fun getBasicTraining(context: Context) : Training
+        {
+            val rndNum: Int = (0..4).random()
+            val color: Long = when(rndNum){
+                0 -> (4278190080).toLong()
+                1 -> (16092482).toLong()
+                2 -> (16073282).toLong()
+                3 -> (15483637).toLong()
+                else -> (4388171).toLong()
+            }
+
+            return Training(0, 1, color, "Select name", true)
+        }
+
+        fun getBasicIntervals(id: Int): MutableList<Interval>
+        {
+            return mutableListOf(
+                Interval(0, id, TrainingActionType.PREPARATION, 10, "", 1),
+                Interval(0, id, TrainingActionType.WORK, 10, "", 2),
+                Interval(0, id, TrainingActionType.REST, 10, "", 3),
+                Interval(0, id, TrainingActionType.REST_BETWEEN_SETS, 10, "", 4),
+                Interval(0, id, TrainingActionType.CALM_DOWN, 0,"", 5)
+            )
+        }
     }
 }

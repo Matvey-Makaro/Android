@@ -60,7 +60,7 @@ class TrainingsAdapter(
         }
 
         holder.intervalsInfo.movementMethod = ScrollingMovementMethod()
-        holder.intervalsInfo.text // TODO: Установить текст
+        holder.intervalsInfo.text = trainingWithIntervals.getPrettyIntervals(context, font!!)
         holder.trainingsName.text = trainingWithIntervals.name
         holder.overralTraining.text = context.getString(R.string.total, trainingWithIntervals.getOverallTime(), trainingWithIntervals.getIntervalsNum())
 

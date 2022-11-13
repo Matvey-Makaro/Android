@@ -1,78 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/trainingItemConstrLayout"
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#3F51B5">
+    android:layout_height="200dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp">
 
-    <Button
-        android:id="@+id/StartTrainingButton"
-        style="@style/Widget.MaterialComponents.Button.Icon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="3dp"
-        android:icon="@android:drawable/ic_media_play"
-        app:backgroundTint="#3F51B5"
-        app:icon="@android:drawable/ic_media_play"
-        app:layout_constraintEnd_toStartOf="@+id/SettingsTrainingButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="#FFFFFF"
-        tools:ignore="SpeakableTextPresentCheck" />
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/trainingItemConstrLayout"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#3F51B5">
 
-    <Button
-        android:id="@+id/SettingsTrainingButton"
-        style="@style/Widget.MaterialComponents.Button.Icon"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="12dp"
-        app:backgroundTint="#3F51B5"
-        app:icon="@drawable/ic_baseline_create_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <Button
+            android:id="@+id/StartTrainingButton"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="3dp"
+            android:icon="@android:drawable/ic_media_play"
+            app:backgroundTint="#3F51B5"
+            app:icon="@android:drawable/ic_media_play"
+            app:layout_constraintEnd_toStartOf="@+id/SettingsTrainingButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="#FFFFFF"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-    <TextView
-        android:id="@+id/IntervalsInfoTextView"
-        android:layout_width="238dp"
-        android:layout_height="112dp"
-        android:layout_marginTop="12dp"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="@+id/TrainingNameTextView"
-        app:layout_constraintTop_toBottomOf="@+id/TrainingNameTextView" />
+        <Button
+            android:id="@+id/SettingsTrainingButton"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="12dp"
+            app:backgroundTint="#3F51B5"
+            app:icon="@drawable/ic_baseline_create_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SpeakableTextPresentCheck" />
 
-    <TextView
-        android:id="@+id/TrainingNameTextView"
-        android:layout_width="237dp"
-        android:layout_height="31dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/training"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/IntervalsInfoTextView"
+            android:layout_width="238dp"
+            android:layout_height="112dp"
+            android:layout_marginTop="12dp"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="@+id/TrainingNameTextView"
+            app:layout_constraintTop_toBottomOf="@+id/TrainingNameTextView" />
 
-    <TextView
-        android:id="@+id/OverallTrainingTextEdit"
-        android:layout_width="351dp"
-        android:layout_height="24dp"
-        android:text="@string/total"
-        android:textColor="#FFFFFF"
-        app:layout_constraintStart_toStartOf="@+id/IntervalsInfoTextView"
-        app:layout_constraintTop_toBottomOf="@+id/IntervalsInfoTextView" />
+        <TextView
+            android:id="@+id/TrainingNameTextView"
+            android:layout_width="237dp"
+            android:layout_height="31dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:text="@string/training"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/DeleteTrainingButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="@string/delete_training"
-        app:backgroundTint="#A3FF1D1D"
-        app:layout_constraintBottom_toTopOf="@+id/OverallTrainingTextEdit"
-        app:layout_constraintStart_toEndOf="@+id/IntervalsInfoTextView" />
+        <TextView
+            android:id="@+id/OverallTrainingTextEdit"
+            android:layout_width="351dp"
+            android:layout_height="24dp"
+            android:text="@string/total"
+            android:textColor="#FFFFFF"
+            app:layout_constraintStart_toStartOf="@+id/IntervalsInfoTextView"
+            app:layout_constraintTop_toBottomOf="@+id/IntervalsInfoTextView" />
+
+        <Button
+            android:id="@+id/DeleteTrainingButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/delete_training"
+            app:backgroundTint="#A3FF1D1D"
+            app:layout_constraintBottom_toTopOf="@+id/OverallTrainingTextEdit"
+            app:layout_constraintStart_toEndOf="@+id/IntervalsInfoTextView" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
+
