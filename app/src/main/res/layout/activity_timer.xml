@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TimerActivity">
+
+    <TextView
+        android:id="@+id/overallLeftTimeTextView"
+        android:layout_width="228dp"
+        android:layout_height="84dp"
+        android:text="00:00"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toTopOf="@+id/intervalsInTimerRecyclerView"
+        app:layout_constraintEnd_toStartOf="@+id/stopStartTimeButton"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/stopStartTimeButton"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:layout_marginTop="4dp"
+        app:icon="@drawable/ic_baseline_play_arrow_24"
+        app:iconGravity="textStart"
+        app:layout_constraintBottom_toTopOf="@+id/intervalsInTimerRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+        android:id="@+id/prevIntervalButton"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        app:icon="@drawable/ic_baseline_skip_previous_24"
+        app:iconGravity="textStart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nextIntervalButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/intervalsCountTextView"
+        app:layout_constraintVertical_bias="0.0"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/intervalsCountTextView"
+        android:layout_width="228dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="7dp"
+        android:layout_marginBottom="16dp"
+        android:text="1/20"
+        android:textAlignment="center"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/nextIntervalButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/prevIntervalButton"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/nextIntervalButton"
+        style="@style/Widget.MaterialComponents.Button.Icon"
+        android:layout_width="84dp"
+        android:layout_height="84dp"
+        android:layout_marginBottom="4dp"
+        android:textAlignment="viewStart"
+        app:backgroundTint="@color/purple_500"
+        app:icon="@drawable/ic_baseline_skip_next_24"
+        app:iconGravity="textTop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/intervalsCountTextView"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/intervalsInTimerRecyclerView"
+        android:layout_width="410dp"
+        android:layout_height="324dp"
+        android:layout_marginBottom="1dp"
+        app:layout_constraintBottom_toTopOf="@+id/intervalsCountTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/intervalTimeLeftTextView"
+        android:layout_width="413dp"
+        android:layout_height="240dp"
+        android:text="99"
+        android:textAlignment="center"
+        android:textSize="160sp"
+        app:layout_constraintBottom_toTopOf="@+id/intervalsInTimerRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/overallLeftTimeTextView"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/currentIntervalNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_marginTop="4dp"
+        android:text="Отдых между сетами"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/intervalsInTimerRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/overallLeftTimeTextView"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
