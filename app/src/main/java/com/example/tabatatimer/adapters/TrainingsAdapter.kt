@@ -1,6 +1,7 @@
 package com.example.tabatatimer.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.text.method.ScrollingMovementMethod
 import android.util.TypedValue
@@ -14,6 +15,7 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tabatatimer.MainActivity
 import com.example.tabatatimer.R
+import com.example.tabatatimer.TrainingSettingsActivity
 import com.example.tabatatimer.database.models.Training
 import com.example.tabatatimer.viewmodels.TrainingsViewModel
 
@@ -54,7 +56,10 @@ class TrainingsAdapter(
         }
 
         holder.settingsTrainingBtn.setOnClickListener{
-            // TODO: Написать обработчик с переходом в другое activity
+            val settingsIntent = Intent(context, TrainingSettingsActivity::class.java)
+            settingsIntent.putExtra("id", trainingWithIntervals.id)
+            context.startActivity(settingsIntent)
+            context.finish()
         }
 
         holder.deleteTrainingBtn.setOnClickListener{

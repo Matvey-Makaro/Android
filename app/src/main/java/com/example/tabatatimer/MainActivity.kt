@@ -1,5 +1,6 @@
 package com.example.tabatatimer
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -18,7 +19,7 @@ class MainActivity : AppCompatActivity() {
 
         // TODO: Получить настройки()
 
-        var viewModel = ViewModelProvider(this).get(TrainingsViewModel::class.java)
+        val viewModel = ViewModelProvider(this).get(TrainingsViewModel::class.java)
         viewModel.initVars(application)
 
         val recyclerView : RecyclerView = findViewById(R.id.trainingsRecyclerView)
@@ -27,7 +28,6 @@ class MainActivity : AppCompatActivity() {
 
         val addBtn : Button = findViewById(R.id.addTrainingButton)
         addBtn.setOnClickListener{
-            // TODO: setIntent
             val basicTraining: Training = TrainingWithIntervals.getBasicTraining(this)
             viewModel.dao?.addTraining(basicTraining)
             val id: Int = viewModel.dao?.getMaxTrainingId()!!
@@ -40,7 +40,11 @@ class MainActivity : AppCompatActivity() {
                 basicTraining.repeats, basicTraining.Name, basicTraining.soundEffect, basicIntervals))
             recyclerView.adapter?.notifyItemInserted(viewModel.trainingWithIntervals.size - 1)
 
-            // finish()
+            val settingsIntent = Intent(this, TrainingSettingsActivity::class.java)
+            settingsIntent.putExtra("id", id)
+            startActivity(settingsIntent)
+
+            finish()
         }
 
         // TODO: updateTheme()
