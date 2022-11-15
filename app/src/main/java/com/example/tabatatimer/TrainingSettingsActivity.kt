@@ -1,13 +1,22 @@
 package com.example.tabatatimer
 
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.TypedValue
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tabatatimer.adapters.IntervalsAdapter
@@ -58,7 +67,7 @@ class TrainingSettingsActivity : AppCompatActivity() {
             recyclerView.adapter!!.notifyItemInserted(viewModel?.curTrainingWithIntervals?.intervals?.size!! - 1)
         }
 
-        // TODO: updateTheme()
+        updateTheme()
     }
 
     override fun onBackPressed() {
@@ -67,5 +76,50 @@ class TrainingSettingsActivity : AppCompatActivity() {
         finish()
     }
 
-    // TODO: Дописать фукнции
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.training_settings_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.apply_changes)
+        {
+            val mainIntent = Intent(this, MainActivity::class.java)
+            this.startActivity(mainIntent)
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun updateTheme() {
+        val sharedPreference = PreferenceManager.getDefaultSharedPreferences(this)
+        val theme : Boolean = sharedPreference.getBoolean("theme_switch_preference", false)
+        val bcg : ConstraintLayout = findViewById(R.id.trainingSettingsConstraintLayout)
+        val tainingNameEditText : EditText = findViewById(R.id.trainingNameEditText)
+
+        val font : String? = sharedPreference.getString("font_preference", "-1")
+
+
+        if (font == "1")
+            tainingNameEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, tainingNameEditText.textSize * (0.5).toFloat())
+
+        if (font == "3")
+            tainingNameEditText.setTextSize(TypedValue.COMPLEX_UNIT_PX, tainingNameEditText.textSize * (1.5).toFloat())
+
+        Toast.makeText(baseContext, font + "/" + tainingNameEditText.textSize.toString(), Toast.LENGTH_LONG).show()
+
+        if(theme) {
+
+            bcg.setBackgroundColor(Color.parseColor("#5e5e5e"))
+            val col : ColorDrawable = ColorDrawable(Color.parseColor("#000000"))
+            getSupportActionBar()?.setBackgroundDrawable(col)
+
+        } else {
+            bcg.setBackgroundColor(Color.parseColor("#FFFFFF"))
+            val col : ColorDrawable = ColorDrawable(Color.parseColor("#FF6200EE"))
+            getSupportActionBar()?.setBackgroundDrawable(col)
+
+        }
+    }
 }

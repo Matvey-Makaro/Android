@@ -47,25 +47,23 @@ class IntervalsAdapter(
     {
         var item: Interval = trainingSettingsViewModel.curTrainingWithIntervals?.intervals?.get(position)!!
 
-        // TODO: Разобраться с настройками
-//        val sharedPref = PreferenceManager.getDefaultSharedPreferences(context)
-//        val theme : Boolean = sharedPref.getBoolean("theme_switch_preference", false)
-//        val font : String? = sharedPref.getString("font_preference", "-1")
-//        holder.layout.setBackgroundColor( if (theme) {
-//            Color.parseColor("#5e5e5e")} else {
-//            Color.parseColor("#FFFFFF")})
-//
-//        if (font == "1") {
-//            holder.intervalTime.setTextSize(TypedValue.COMPLEX_UNIT_PX, (52 *0.5).toFloat())
-//            holder.description.setTextSize(TypedValue.COMPLEX_UNIT_PX, (52 *0.5).toFloat())
-//            holder.curIntervalType.setTextSize(TypedValue.COMPLEX_UNIT_PX, (52 *0.5).toFloat())
-//        }
-//
-//        if (font == "3") {
-//            holder.intervalTime.setTextSize(TypedValue.COMPLEX_UNIT_PX, (52 * 1.5).toFloat())
-//            holder.description.setTextSize(TypedValue.COMPLEX_UNIT_PX, (52 * 1.5).toFloat())
-//            holder.curIntervalType.setTextSize(TypedValue.COMPLEX_UNIT_PX, (52 * 1.5).toFloat())
-//        }
+        val sharedPreference = PreferenceManager.getDefaultSharedPreferences(context)
+        val theme : Boolean = sharedPreference.getBoolean("theme_switch_preference", false)
+        val font : String? = sharedPreference.getString("font_preference", "-1")
+        holder.layout.setBackgroundColor( if (theme) {
+            Color.parseColor("#5e5e5e")} else {
+            Color.parseColor("#FFFFFF")})
+
+        if (font == "1") {
+            holder.intervalTime.setTextSize(TypedValue.COMPLEX_UNIT_PX, (52 *0.5).toFloat())
+            holder.description.setTextSize(TypedValue.COMPLEX_UNIT_PX, (52 *0.5).toFloat())
+            holder.curIntervalType.setTextSize(TypedValue.COMPLEX_UNIT_PX, (52 *0.5).toFloat())
+        }
+        else if (font == "3") {
+            holder.intervalTime.setTextSize(TypedValue.COMPLEX_UNIT_PX, (52 * 1.5).toFloat())
+            holder.description.setTextSize(TypedValue.COMPLEX_UNIT_PX, (52 * 1.5).toFloat())
+            holder.curIntervalType.setTextSize(TypedValue.COMPLEX_UNIT_PX, (52 * 1.5).toFloat())
+        }
 
         holder.intervalNumber.text = (position + 1).toString()
         holder.intervalTime.setText(item.intervalTime.toString())

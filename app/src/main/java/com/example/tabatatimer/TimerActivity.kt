@@ -1,12 +1,17 @@
 package com.example.tabatatimer
 
 import android.content.*
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.IBinder
+import android.util.TypedValue
 import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tabatatimer.adapters.TimerAdapter
 import com.example.tabatatimer.database.AppDatabase
@@ -95,7 +100,7 @@ class TimerActivity : AppCompatActivity() {
             }
         }
 
-        // TODO: updateTheme()
+        updateTheme()
     }
 
     override fun onStart() {
@@ -269,6 +274,36 @@ class TimerActivity : AppCompatActivity() {
             return String.format("%02d:%02d", minutes, seconds)
 
         return String.format("%02d", seconds)
+    }
+
+    fun updateTheme() {
+        val sharedPreference = PreferenceManager.getDefaultSharedPreferences(this)
+        val theme : Boolean = sharedPreference.getBoolean("theme_switch_preference", false)
+        val bcg : ConstraintLayout = findViewById(R.id.timerConstraintLayout)
+        val font : String? = sharedPreference.getString("font_preference", "-1")
+
+
+        if (font == "1")
+            binding.currentIntervalNameTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, binding.currentIntervalNameTextView.textSize * (0.5).toFloat())
+
+        if (font == "3")
+            binding.currentIntervalNameTextView.setTextSize(TypedValue.COMPLEX_UNIT_PX, binding.currentIntervalNameTextView.textSize * (1.5).toFloat())
+
+        binding.prevIntervalButton.setBackgroundColor(Color.parseColor("#5e5e5e"))
+
+        var cur_color: Int = Color.parseColor("#5e5e5e")
+        if(theme)
+            cur_color = Color.parseColor("#5e5e5e")
+
+        else cur_color = Color.parseColor("#FF6200EE")
+
+        bcg.setBackgroundColor(cur_color)
+        val col : ColorDrawable = ColorDrawable(cur_color)
+        getSupportActionBar()?.setBackgroundDrawable(col)
+
+        binding.prevIntervalButton.setBackgroundColor(cur_color)
+        binding.nextIntervalButton.setBackgroundColor(cur_color)
+        binding.stopStartTimeButton.setBackgroundColor(cur_color)
     }
 }
 

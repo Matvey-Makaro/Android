@@ -1,10 +1,12 @@
 package com.example.tabatatimer.adapters
 
+import android.graphics.Color
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tabatatimer.R
 import com.example.tabatatimer.TimerActivity
@@ -30,7 +32,25 @@ class TimerAdapter(
     }
 
     override fun onBindViewHolder(holder: TimerViewHolder, position: Int) {
-        // TODO: Получить настройки
+        val sharedPreference = PreferenceManager.getDefaultSharedPreferences(context)
+        val theme : Boolean = sharedPreference.getBoolean("theme_switch_preference", false)
+        val font : String? = sharedPreference.getString("font_preference", "-1")
+        if (font == "1") {
+            holder.interval_btn.setTextSize(TypedValue.COMPLEX_UNIT_PX,  (52 * 0.5).toFloat())
+        }
+        else if (font == "3") {
+            holder.interval_btn.setTextSize(TypedValue.COMPLEX_UNIT_PX, (52 * 1.4).toFloat())
+        }
+
+        if (position == context.curPos)
+            holder.interval_btn.setBackgroundColor(Color.parseColor("#011f73"))
+        else
+        {
+            holder.interval_btn.setBackgroundColor(
+                Color.parseColor(
+                if (theme) {"#5e5e5e"} else {"#FF6200EE" }
+            ))
+        }
 
         holder.interval_btn.text = String.format(
             "%02d. %s",
@@ -39,17 +59,6 @@ class TimerAdapter(
         )
 
         holder.interval_btn.setOnClickListener{context.pressBtn(position)}
-
-        // TODO:
-//        if (font == "1") {
-//            holder.btn.setTextSize(TypedValue.COMPLEX_UNIT_PX,  (52 * 0.5).toFloat())
-//        }
-//
-//
-//        if (font == "3") {
-//            holder.btn.setTextSize(TypedValue.COMPLEX_UNIT_PX, (52 * 1.4).toFloat())
-//        }
-
     }
 
     override fun getItemCount(): Int {

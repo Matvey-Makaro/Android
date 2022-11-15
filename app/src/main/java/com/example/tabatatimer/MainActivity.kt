@@ -1,26 +1,37 @@
 package com.example.tabatatimer
 
 import android.content.Intent
+import android.content.res.Configuration
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.widget.Button
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.ViewModelProvider
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tabatatimer.adapters.TrainingsAdapter
 import com.example.tabatatimer.database.models.Training
 import com.example.tabatatimer.database.models.TrainingWithIntervals
 import com.example.tabatatimer.viewmodels.TrainingsViewModel
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // TODO: Получить настройки()
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this)
+        val theme = sharedPreferences.getBoolean("theme_switch_preference", false)
+        val lang = sharedPreferences.getBoolean("language_switch_preference", false)
+        if(lang)
+            setLocale("ru")
+        else setLocale("")
 
         val viewModel = ViewModelProvider(this).get(TrainingsViewModel::class.java)
         viewModel.initVars(application)
@@ -50,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-        // TODO: updateTheme()
+        updateTheme()
     }
 
     override fun onBackPressed()
@@ -58,13 +69,15 @@ class MainActivity : AppCompatActivity() {
         finish()
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean
+    {
         val inflater: MenuInflater = menuInflater
         inflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean
+    {
         if(item.itemId == R.id.change_application_settings)
         {
             val settingsIntent = Intent(this, SettingsActivity::class.java)
@@ -72,5 +85,37 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun setLocale(language: String)
+    {
+        val locale: Locale = Locale(language)
+        Locale.setDefault(locale)
+
+        val conf: Configuration = Configuration()
+        conf.setLocale(locale)
+
+        baseContext.resources.updateConfiguration(conf, baseContext.resources.displayMetrics)
+    }
+
+    fun updateTheme() {
+        val sharedPreference = PreferenceManager.getDefaultSharedPreferences(this)
+        val theme : Boolean = sharedPreference.getBoolean("theme_switch_preference", false)
+
+        val bcg : ConstraintLayout = findViewById(R.id.mainConstraintLayout)
+
+        if(theme)
+        {
+
+            bcg.setBackgroundColor(Color.parseColor("#5e5e5e"))
+            val col: ColorDrawable = ColorDrawable(Color.parseColor("#000000"))
+            getSupportActionBar()?.setBackgroundDrawable(col)
+        }
+
+        else {
+            bcg.setBackgroundColor(Color.parseColor("#FFFFFF"))
+            val col : ColorDrawable = ColorDrawable(Color.parseColor("#FF6200EE"))
+            getSupportActionBar()?.setBackgroundDrawable(col)
+        }
     }
 }
