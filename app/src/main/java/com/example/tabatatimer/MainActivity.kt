@@ -3,6 +3,9 @@ package com.example.tabatatimer
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.widget.Button
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -48,5 +51,26 @@ class MainActivity : AppCompatActivity() {
         }
 
         // TODO: updateTheme()
+    }
+
+    override fun onBackPressed()
+    {
+        finish()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.menu_main, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.change_application_settings)
+        {
+            val settingsIntent = Intent(this, SettingsActivity::class.java)
+            this.startActivity(settingsIntent)
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

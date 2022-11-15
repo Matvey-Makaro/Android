@@ -15,6 +15,7 @@ import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tabatatimer.MainActivity
 import com.example.tabatatimer.R
+import com.example.tabatatimer.TimerActivity
 import com.example.tabatatimer.TrainingSettingsActivity
 import com.example.tabatatimer.database.models.Training
 import com.example.tabatatimer.viewmodels.TrainingsViewModel
@@ -52,7 +53,14 @@ class TrainingsAdapter(
         var trainingWithIntervals = trainingsViewModel.trainingWithIntervals[position]
 
         holder.startTrainingBtn.setOnClickListener {
-            // TODO: Написать обработчик с переходом в другое activity
+            val setIntent = Intent (context, TimerActivity::class.java)
+
+            val id : Int = trainingWithIntervals.id
+
+            setIntent.putExtra("id", id)
+            context.startActivity(setIntent)
+
+            context.finish()
         }
 
         holder.settingsTrainingBtn.setOnClickListener{
