@@ -52,33 +52,33 @@ class TimerActivity : AppCompatActivity() {
             isBound = true
 
             if(timerService.isRunning == false)
-            {
                 this@TimerActivity.foregroundStartService("Start")
-                if(timerService.id == -1)
-                {
-                    timerService.id = trainingId
-                }
-                else
-                {
-                    trainingId = timerService.id
-                    curPos = timerService.curPos
-                }
 
-                dao = AppDatabase.getDatabase(application).trainingDao()
-                intervals = dao?.getTrainingsIntervals(trainingId)
-                timerService.isRunning = true
-                registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
-
-                binding.nextIntervalButton.setOnClickListener { nextTimerInterval() }
-                binding.prevIntervalButton.setOnClickListener { prevTimerInterval() }
-                binding.stopStartTimeButton.setOnClickListener { stopStartTimer() }
-
-                binding.intervalsInTimerRecyclerView.layoutManager = LinearLayoutManager(this@TimerActivity)
-                binding.intervalsInTimerRecyclerView.adapter = TimerAdapter(this@TimerActivity, trainingId)
-
-                binding.stopStartTimeButton.icon = AppCompatResources.getDrawable(this@TimerActivity, R.drawable.ic_baseline_pause_24)
-                timerStarted = true
+            if(timerService.id == -1)
+            {
+                timerService.id = trainingId
             }
+            else
+            {
+                trainingId = timerService.id
+                curPos = timerService.curPos
+            }
+
+
+            dao = AppDatabase.getDatabase(application).trainingDao()
+            intervals = dao?.getTrainingsIntervals(trainingId)
+            timerService.isRunning = true
+            registerReceiver(updateTime, IntentFilter(TimerService.TIMER_UPDATED))
+
+            binding.nextIntervalButton.setOnClickListener { nextTimerInterval() }
+            binding.prevIntervalButton.setOnClickListener { prevTimerInterval() }
+            binding.stopStartTimeButton.setOnClickListener { stopStartTimer() }
+
+            binding.intervalsInTimerRecyclerView.layoutManager = LinearLayoutManager(this@TimerActivity)
+            binding.intervalsInTimerRecyclerView.adapter = TimerAdapter(this@TimerActivity, trainingId)
+
+            binding.stopStartTimeButton.icon = AppCompatResources.getDrawable(this@TimerActivity, R.drawable.ic_baseline_pause_24)
+            timerStarted = true
         }
 
         override fun onServiceDisconnected(name: ComponentName?)
@@ -106,7 +106,7 @@ class TimerActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         Intent(this, TimerService::class.java).also { intent ->
-            bindService(intent, connection, BIND_AUTO_CREATE)
+            bindService(intent, connection, Context.BIND_AUTO_CREATE)
         }
         isBound = true
     }

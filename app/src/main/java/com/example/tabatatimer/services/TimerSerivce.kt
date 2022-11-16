@@ -173,7 +173,7 @@ class TimerService: Service()
                 val soundTimer = Timer()
                 if(curPos < intervals?.size!!)
                     soundTimer.scheduleAtFixedRate(SoundTask(1,  RingtoneManager.getRingtone(applicationContext, RingtoneManager.getDefaultUri(
-                        RingtoneManager.TYPE_RINGTONE))), 0, 100)
+                        RingtoneManager.TYPE_RINGTONE))), 0, 1000)
                 else
                     soundTimer.scheduleAtFixedRate(SoundTask(1, RingtoneManager.getRingtone(applicationContext, RingtoneManager.getDefaultUri(
                         RingtoneManager.TYPE_ALARM))), 0, 2000)

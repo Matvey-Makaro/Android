@@ -18,10 +18,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.tabatatimer.adapters.TrainingsAdapter
 import com.example.tabatatimer.database.models.Training
 import com.example.tabatatimer.database.models.TrainingWithIntervals
+import com.example.tabatatimer.databinding.ActivityMainBinding
 import com.example.tabatatimer.viewmodels.TrainingsViewModel
 import java.util.*
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
+    private var _binding: ActivityMainBinding? = null
+    // This property is only valid between onCreateView and
+    // onDestroyView.
+    private val binding get() = _binding!!
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
