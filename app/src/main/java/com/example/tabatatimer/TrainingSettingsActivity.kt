@@ -62,6 +62,7 @@ class TrainingSettingsActivity : AppCompatActivity() {
         recyclerView.adapter = IntervalsAdapter(this, viewModel!!)
 
         val addIntervalBtn: Button = findViewById(R.id.addIntervalButton)
+        addIntervalBtn.text = getString(R.string.add_btn_text)
         addIntervalBtn.setOnClickListener{
             viewModel!!.addInterval(viewModel?.curTrainingWithIntervals?.intervals?.size!! + 1)
             recyclerView.adapter!!.notifyItemInserted(viewModel?.curTrainingWithIntervals?.intervals?.size!! - 1)

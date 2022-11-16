@@ -15,7 +15,6 @@ import com.example.tabatatimer.R
 import com.example.tabatatimer.database.models.Interval
 import com.example.tabatatimer.database.models.TrainingActionType
 import com.example.tabatatimer.viewmodels.TrainingSettingsViewModel
-import org.w3c.dom.Text
 
 class IntervalsAdapter(
     private var context: Context,
@@ -91,7 +90,7 @@ class IntervalsAdapter(
         }
 
         holder.description.setText( if(item.description == "") {
-            "Description"
+            context.getString(com.example.tabatatimer.R.string.description)
         }
         else{
             item.description

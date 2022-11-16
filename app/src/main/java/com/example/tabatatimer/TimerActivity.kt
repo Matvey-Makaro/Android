@@ -192,7 +192,13 @@ class TimerActivity : AppCompatActivity() {
             mxPos = intent.getIntExtra(TimerService.MAX_POSITION_EXTRA, 1)
             val tLeft = intent.getStringExtra(TimerService.OV_TIME_LEFT_EXTRA)
 
-            val name : String = if (nameId < 5) { TrainingActionType.values()[nameId].name } else {"Финишь"}
+
+            var name = getString(R.string.finish)
+            if(nameId < 5)
+            {
+                val names = resources.getStringArray(R.array.interval_types)
+                name = names[nameId + 1]
+            }
 
             if (id == 1) {
                 binding.intervalTimeLeftTextView.text = getTimeStringFromDouble(time)

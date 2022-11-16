@@ -41,8 +41,10 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = TrainingsAdapter(this, viewModel)
 
         val addBtn : Button = findViewById(R.id.addTrainingButton)
+        addBtn.text = getString(R.string.add_btn_text)
         addBtn.setOnClickListener{
             val basicTraining: Training = TrainingWithIntervals.getBasicTraining(this)
+            basicTraining.Name = getString(R.string.select_name)
             viewModel.dao?.addTraining(basicTraining)
             val id: Int = viewModel.dao?.getMaxTrainingId()!!
             val basicIntervals = TrainingWithIntervals.getBasicIntervals(id)

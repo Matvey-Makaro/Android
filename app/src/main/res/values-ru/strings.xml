@@ -1,0 +1,49 @@
+<resources>
+    <string name="app_name">Интервальный таймер</string>
+    <string name="delete_training">Удалить</string>
+    <string name="total">Всего: %s / %2$d интервалов.</string>
+    <string name="training">Тренировка</string>
+
+    <string-array name="interval_types">
+        <item> </item>
+        <item>Подготовка</item>
+        <item>Работа</item>
+        <item>Отдых</item>
+        <item>Отдых между сетами</item>
+        <item>Заминка</item>
+        <item>Удалить</item>
+    </string-array>
+
+    <string-array name="font_sizes_entries_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>
+
+    <string-array name="add_interval_up_down">
+        <item> </item>
+        <item>Добавить интервал выше</item>
+        <item>Добавить интервал ниже</item>
+    </string-array>
+
+
+    <string name="theme_setting_summary">Переключить тему</string>
+    <string name="language_setting_summary">Изменить язык</string>
+    <string name="theme_setting_title">Тема: Светлая / Тёмная</string>
+    <string name="language_setting_title">Язык: Английский / Русский</string>
+    <string name="delete_all_setting_title">Удалить все данные</string>
+    <string name="delete_workout">Удалить</string>
+    <string name="font_settings">Размер шрифта</string>
+
+    <string-array name="font_sizes_array">
+        <item>Маленький</item>
+        <item>Средний</item>
+        <item>Большой</item>
+    </string-array>
+
+    <string name="data_cleaned_msg">Удалить все данные из базы данных</string>
+    <string name="add_btn_text">Добавить</string>
+    <string name="finish">Финиш</string>
+    <string name="select_name">Выберите имя</string>
+    <string name="description">Описание</string>
+</resources>

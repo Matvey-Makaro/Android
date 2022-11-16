@@ -1,6 +1,7 @@
 package com.example.tabatatimer.database.models
 
 import android.content.Context
+import android.provider.Settings.Global.getString
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
@@ -32,7 +33,7 @@ data class Training(
     @PrimaryKey(autoGenerate = true) @ColumnInfo(name = "training_id") var training_id : Int,
     @NonNull @ColumnInfo(name="repeats") val repeats : Int,
     @NonNull @ColumnInfo(name="color") val color : Long,
-    @NonNull @ColumnInfo(name="name") val Name: String,
+    @NonNull @ColumnInfo(name="name") var Name: String,
     @NonNull @ColumnInfo(name="sound_effect") val soundEffect: Boolean
 )
 

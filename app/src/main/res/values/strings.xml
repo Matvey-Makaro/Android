@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Tabata timer</string>
     <string name="delete_training">Delete</string>
-    <string name="total">Всего: %s / %2$d интервалов.</string>
-    <string name="training">Тренировка</string>
+    <string name="total">Total: %s / %2$d intervals.</string>
+    <string name="training">Training</string>
 
     <string-array name="interval_types">
         <item> </item>
@@ -42,5 +42,9 @@
     </string-array>
 
     <string name="data_cleaned_msg">Cleaned all data from database</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_btn_text">Add</string>
+    <string name="finish">Finish</string>
+    <string name="select_name">Select name</string>
+    <string name="description">Description</string>
+    <!--    <string name="hello_blank_fragment">Hello blank fragment</string>-->
 </resources>
