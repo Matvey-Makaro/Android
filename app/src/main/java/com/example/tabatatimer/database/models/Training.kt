@@ -102,7 +102,7 @@ class TrainingWithIntervals(
                 Interval(0, id, TrainingActionType.WORK, 10, "", 2),
                 Interval(0, id, TrainingActionType.REST, 10, "", 3),
                 Interval(0, id, TrainingActionType.REST_BETWEEN_SETS, 10, "", 4),
-                Interval(0, id, TrainingActionType.CALM_DOWN, 0,"", 5)
+                Interval(0, id, TrainingActionType.CALM_DOWN, 10,"", 5)
             )
         }
     }

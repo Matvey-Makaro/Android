@@ -31,7 +31,6 @@ class IntervalsAdapter(
         val description : EditText = view.findViewById(com.example.tabatatimer.R.id.descriptionEditText)
         val curIntervalType : TextView = view.findViewById(com.example.tabatatimer.R.id.curIntervalTypeTextView)
         val addSpinner: Spinner = view.findViewById(com.example.tabatatimer.R.id.addSpinner)
-        val dragView : ImageView = view.findViewById(com.example.tabatatimer.R.id.additionalSpinImageSelect)
         val layout: ConstraintLayout = view.findViewById(com.example.tabatatimer.R.id.intervalConstraintLayout)
     }
 
