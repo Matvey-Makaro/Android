@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+        <!--
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            android:fillViewport="true"
+            android:layout_weight="1">
+        </ScrollView>
+        -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/copyResultButton"
+                    android:text="copy"
+                    android:textSize="10sp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/resultText"
+                    tools:text="0133129039"
+                    android:scrollbars="vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom|right"
+                    android:layout_weight="4"
+                    android:textSize="30sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/pasteInputButton"
+                    android:text="paste"
+                    android:textSize="10sp"
+                    android:layout_margin="5dp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
+
+                <EditText
+                    android:id="@+id/inputText"
+                    tools:text="193903"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:gravity="bottom|right"
+                    android:layout_weight="4"
+                    android:textSize="30sp"
+                    android:inputType="textNoSuggestions" />
+        </LinearLayout>
+</LinearLayout>
