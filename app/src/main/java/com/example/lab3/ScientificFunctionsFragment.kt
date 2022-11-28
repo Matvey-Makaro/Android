@@ -27,55 +27,72 @@ class ScientificFunctionsFragment : Fragment() {
             setFragmentResult("requestKey", bundleOf("bundleKey" to result))
         }
         binding.buttonTan.setOnClickListener {
-            val result = "tan("
+            val result = "tg("
             setFragmentResult("requestKey", bundleOf("bundleKey" to result))
         }
-        /*binding.buttonASin.setOnClickListener {
-            val result = "asin("
-            setFragmentResult("requestKey", bundleOf("bundleKey" to result))
-        }
-        binding.buttonACos.setOnClickListener {
-            val result = "acos("
-            setFragmentResult("requestKey", bundleOf("bundleKey" to result))
-        }
-        binding.buttonATan.setOnClickListener {
-            val result = "atan("
-            setFragmentResult("requestKey", bundleOf("bundleKey" to result))
-        }*/
+
         binding.buttonLn.setOnClickListener {
             val result = "ln("
             setFragmentResult("requestKey", bundleOf("bundleKey" to result))
         }
-        /*binding.buttonLog2.setOnClickListener {
-            val result = "log2("
+
+        binding.buttonASin.setOnClickListener {
+            val result = "arcsin("
             setFragmentResult("requestKey", bundleOf("bundleKey" to result))
         }
-        binding.buttonLog10.setOnClickListener {
-            val result = "log("
+
+        binding.buttonACos.setOnClickListener {
+            val result = "arccos("
             setFragmentResult("requestKey", bundleOf("bundleKey" to result))
         }
+
+        binding.buttonATan.setOnClickListener {
+            val result = "arctg("
+            setFragmentResult("requestKey", bundleOf("bundleKey" to result))
+        }
+
+        binding.buttonLg?.setOnClickListener {
+            val result = "lg("
+            setFragmentResult("requestKey", bundleOf("bundleKey" to result))
+        }
+
+        binding.buttonSinh.setOnClickListener {
+            val result = "sh("
+            setFragmentResult("requestKey", bundleOf("bundleKey" to result))
+        }
+
+        binding.buttonCosh.setOnClickListener {
+            val result = "ch("
+            setFragmentResult("requestKey", bundleOf("bundleKey" to result))
+        }
+
+        binding.buttonTanh.setOnClickListener {
+            val result = "tgh("
+            setFragmentResult("requestKey", bundleOf("bundleKey" to result))
+        }
+
         binding.buttonExp.setOnClickListener {
             val result = "exp("
             setFragmentResult("requestKey", bundleOf("bundleKey" to result))
-        }*/
-        binding.buttonSqrt.setOnClickListener {
-            val result = "sqrt("
-            setFragmentResult("requestKey", bundleOf("bundleKey" to result))
         }
-        /*binding.buttonAbs.setOnClickListener {
-            val result = "abs("
-            setFragmentResult("requestKey", bundleOf("bundleKey" to result))
-        }*/
-        binding.buttonPower.setOnClickListener {
-            val result = "^("
-            setFragmentResult("requestKey", bundleOf("bundleKey" to result))
-        }
+
         binding.buttonPi.setOnClickListener {
             val result = "pi"
             setFragmentResult("requestKey", bundleOf("bundleKey" to result))
         }
+
         binding.buttonFact.setOnClickListener {
-            val result = "!"
+            val result = "fact("
+            setFragmentResult("requestKey", bundleOf("bundleKey" to result))
+        }
+
+        binding.buttonPower.setOnClickListener {
+            val result = "^("
+            setFragmentResult("requestKey", bundleOf("bundleKey" to result))
+        }
+
+        binding.buttonSqrt.setOnClickListener {
+            val result = "sqrt("
             setFragmentResult("requestKey", bundleOf("bundleKey" to result))
         }
         return binding.root

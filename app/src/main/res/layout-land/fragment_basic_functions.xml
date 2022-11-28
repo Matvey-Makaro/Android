@@ -23,7 +23,8 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:text="AC"
-            android:textSize="24sp" />
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/buttonDelete"
@@ -33,19 +34,21 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:text="C"
-            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
             style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/buttonLBracket"
+            style="?android:attr/buttonBarButtonStyle"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:text="("
-            android:textSize="24sp"
-            style="?android:attr/buttonBarButtonStyle"/>
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/buttonRBracket"
@@ -55,7 +58,8 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             style="?android:attr/buttonBarButtonStyle"
-            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
             android:text=")" />
 
         <Button
@@ -66,7 +70,8 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             style="?android:attr/buttonBarButtonStyle"
-            android:textSize="24sp"
+            android:textColor="@color/black"
+            android:textSize="20sp"
             android:text="/" />
 
     </LinearLayout>
@@ -86,6 +91,7 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:text="7" />
 
@@ -97,6 +103,7 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:text="8" />
 
@@ -108,6 +115,7 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:text="9" />
 
@@ -119,8 +127,9 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/black"
             android:textSize="24sp"
-            android:text="X" />
+            android:text="*" />
 
     </LinearLayout>
 
@@ -139,6 +148,7 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:text="4" />
 
@@ -150,6 +160,7 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/black"
             android:text="5"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -162,6 +173,7 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:text="6" />
 
@@ -173,6 +185,7 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:text="-" />
 
@@ -193,6 +206,7 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:text="1" />
 
@@ -204,6 +218,7 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:text="2" />
 
@@ -215,6 +230,7 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:text="3" />
 
@@ -226,6 +242,7 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:text="+" />
 
@@ -247,6 +264,7 @@
             android:insetBottom="0dp"
             android:text="0"
             style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:textAlignment="gravity" />
 
@@ -258,6 +276,7 @@
             android:insetTop="0dp"
             android:insetBottom="0dp"
             style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/black"
             android:textSize="24sp"
             android:text="." />
 
@@ -270,6 +289,7 @@
             android:insetBottom="0dp"
             android:text="="
             style="?android:attr/buttonBarButtonStyle"
+            android:textColor="@color/black"
             android:textSize="24sp" />
 
     </LinearLayout>

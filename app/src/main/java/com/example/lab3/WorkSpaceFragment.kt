@@ -1,16 +1,7 @@
 package com.example.lab3
 
-//import org.mariuszgromada.math.mxparser.*
-//import android.annotation.SuppressLint
-//import android.provider.SyncStateContract.Helpers.insert
-//import android.widget.EditText
-import android.content.ClipData
-import android.content.ClipDescription.MIMETYPE_TEXT_PLAIN
-import android.content.ClipboardManager
-import android.content.Context.CLIPBOARD_SERVICE
 import android.content.res.Configuration
 import android.os.Bundle
-import android.text.TextUtils
 import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.view.LayoutInflater
@@ -20,10 +11,11 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
+import ch.obermuhlner.math.big.BigDecimalMath
 import com.example.lab3.databinding.FragmentWorkSpaceBinding
-import com.mpobjects.bdparsii.eval.Functions
-import com.mpobjects.bdparsii.eval.Parser
-import com.mpobjects.bdparsii.eval.Scope
+import com.mpobjects.bdparsii.eval.*
+import com.mpobjects.bdparsii.eval.Function
+import kotlinx.coroutines.*
 import java.math.BigDecimal
 import java.math.MathContext
 import java.math.RoundingMode
@@ -32,6 +24,42 @@ fun fact(num: Int): BigDecimal? {
     if (num == 0) { return BigDecimal.ONE }
 
     return fact(num - 1)?.multiply(num.toBigDecimal())
+}
+
+/*class Factorial : Function
+{
+    override fun getNumberOfArguments(): Int
+    {
+        return 1
+    }
+
+    override fun eval(args: List<Expression?>?, mathContext: MathContext?): BigDecimal?
+    {
+        BigDecimal num =
+
+    }
+
+    override fun isNaturalFunction(): Boolean {
+        return true
+    }
+}*/
+
+val Factorial: Function = object : UnaryFunction() {
+    override fun eval(a: BigDecimal, mathContext: MathContext): BigDecimal {
+        return BigDecimalMath.factorial(a.setScale(11, RoundingMode.HALF_UP), MathContextGuard.getSafeContext(mathContext)).setScale(11, RoundingMode.HALF_UP)
+    }
+}
+
+val TAN: Function = object : UnaryFunction() {
+    override fun eval(a: BigDecimal, mathContext: MathContext): BigDecimal {
+        return BigDecimalMath.tan(a.setScale(11, RoundingMode.HALF_UP), MathContextGuard.getSafeContext(mathContext)).setScale(11, RoundingMode.HALF_UP)
+    }
+}
+
+val ATAN: Function = object : UnaryFunction() {
+    override fun eval(a: BigDecimal, mathContext: MathContext): BigDecimal {
+        return BigDecimalMath.atan(a.setScale(11, RoundingMode.HALF_UP), MathContextGuard.getSafeContext(mathContext)).setScale(11, RoundingMode.HALF_UP)
+    }
 }
 
 class WorkSpaceFragment : Fragment() {
@@ -52,9 +80,6 @@ class WorkSpaceFragment : Fragment() {
 
     // returns the expression with erased function
     private fun eraseFunctionByPosition(expr: String, pos: Int): Pair<Int, String> {
-        Log.d("WorkSpaceFragment", "pos: $pos")
-        Log.d("WorkSpaceFragment", "expression: $expr")
-
         var eraseStart = pos
         var eraseEnd = pos
 
@@ -78,9 +103,6 @@ class WorkSpaceFragment : Fragment() {
         if (eraseStart < 0) { eraseStart = 0 }
         if (eraseEnd > expr.length) { eraseEnd = expr.length }
 
-        Log.d("WorkSpaceFragment", "eraseStart = $eraseStart")
-        Log.d("WorkSpaceFragment", "eraseEnd = $eraseEnd")
-
         return Pair(eraseStart, expr.removeRange(eraseStart, eraseEnd))
     }
 
@@ -103,31 +125,6 @@ class WorkSpaceFragment : Fragment() {
         binding.inputText.showSoftInputOnFocus = false
         binding.inputText.setHorizontallyScrolling(true)
 
-        binding.copyResultButton.setOnClickListener {
-            val clipboard: ClipboardManager =
-                activity?.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-
-            val clipData: ClipData = ClipData.newPlainText(
-                "text",
-                binding.resultText.text
-            )
-            clipboard.setPrimaryClip(clipData)
-            Toast.makeText(activity, "copied result!", Toast.LENGTH_SHORT).show()
-        }
-
-        binding.pasteInputButton.setOnClickListener {
-            val clipboard: ClipboardManager =
-                activity?.getSystemService(CLIPBOARD_SERVICE) as ClipboardManager
-
-            if (clipboard.hasPrimaryClip() && clipboard.primaryClipDescription!!.hasMimeType(MIMETYPE_TEXT_PLAIN)) {
-                val item = clipboard.primaryClip!!.getItemAt(0)
-                val str = item.text.toString()
-                binding.inputText.setText(str)
-                binding.inputText.setSelection(str.length)
-                Toast.makeText(activity, "pasted from clipboard!", Toast.LENGTH_SHORT).show()
-            }
-        }
-
         val signs = "+-/*^"
 
         setFragmentResultListener("requestKey") { _, bundle ->
@@ -144,9 +141,7 @@ class WorkSpaceFragment : Fragment() {
             }
             else if (button == "delete") {
                 if (position != 0 && (positionStart != position)) {
-                    // удалить в двух местах функции, если есть
-                    // поменять positionStart и position
-                    // удалить все от positionStart до position
+
 
                     if (positionIsInFunction(changeText.toString(), positionStart)) {
                         val result = eraseFunctionByPosition(changeText.toString(), positionStart)
@@ -253,48 +248,70 @@ class WorkSpaceFragment : Fragment() {
                     //return@setFragmentResultListener
                 }
 
-                Parser.registerFunction("tg", Functions.TAN)
+                Parser.registerFunction("tg", TAN)
                 Parser.registerFunction("sh", Functions.SINH)
                 Parser.registerFunction("ch", Functions.COSH)
                 Parser.registerFunction("tgh", Functions.TANH)
                 Parser.registerFunction("arcsin", Functions.ASIN)
                 Parser.registerFunction("arccos", Functions.ACOS)
-                Parser.registerFunction("arctan", Functions.ATAN)
+                Parser.registerFunction("arctg", ATAN)
+                Parser.registerFunction("lg", Functions.LOG)
+                Parser.registerFunction("fact", Factorial)
 
-                try {
-                    val list = changeText.toString().split(Regex("(?<=[()+/*-])|(?=[()+/*-])"))
-                    val newList = ArrayList<String>()
-                    for (item in list) {
-                        if (item.contains('!')) {
-                            if (item.dropLast(1).toInt() > 500) throw ArithmeticException()
-                            newList.add(fact(item.dropLast(1).toInt()).toString())
-                        }
-                        else {
-                            newList.add(item)
-                        }
-                    }
-                    changeText = StringBuilder(TextUtils.join("", newList))
-                }
-                catch(e: ArithmeticException) {
-                    Toast.makeText(activity, "cannot evaluate this expression!", Toast.LENGTH_SHORT).show()
-                }
-                catch(e: Exception) {
-                    Toast.makeText(activity, "invalid expression!", Toast.LENGTH_SHORT).show()
-                }
+//                try {
+//                    val list = changeText.toString().split(Regex("(?<=[()+/*-^])|(?=[()+/*-^])"))
+//                    val newList = ArrayList<String>()
+//                    for (item in list) {
+//                        if (item.contains('!')) {
+//                            if (item.dropLast(1).toBigDecimal() > BigDecimal(500)) throw ArithmeticException()
+//                            newList.add(fact(item.dropLast(1).toInt()).toString())
+//                        }
+//                        else {
+//                            newList.add(item)
+//                        }
+//                    }
+//                    changeText = StringBuilder(TextUtils.join("", newList))
+//                }
+//                catch(e: ArithmeticException) {
+//                    Toast.makeText(activity, "cannot evaluate this expression!", Toast.LENGTH_SHORT).show()
+//                }
+//                catch(e: Exception) {
+//                    Toast.makeText(activity, "invalid expression!", Toast.LENGTH_SHORT).show()
+//                }
 
                 val scope = Scope()
-                scope.mathContext = MathContext(1024)
+                scope.mathContext = MathContext(170)
 
                 try {
                     val userExpression = changeText.toString()
                     val exp = Parser.parse(userExpression, scope)
-                    //val exp = Parser.parse("2.(3)", scope)
-                    //val exp = Parser.parse(userExpression)
-                    //val resultNumber = exp.evaluate().setScale(10, RoundingMode.HALF_UP).stripTrailingZeros()
-                    //val resultNumber = exp.evaluate().stripTrailingZeros()
-                    //val resultNumber = exp.evaluate()
-                    val resultNumber = exp.evaluate().setScale(30, RoundingMode.HALF_UP).stripTrailingZeros()
+                    var resultNumber = BigDecimal("0", scope.mathContext)
 
+                    val startTime = System.currentTimeMillis()
+
+                    val job = CoroutineScope(SupervisorJob()).launch { withContext(Dispatchers.IO) {
+                        try {
+                            resultNumber = exp.evaluate().setScale(11, RoundingMode.HALF_UP).stripTrailingZeros()
+                            // resultNumber = exp.evaluate().stripTrailingZeros()
+                        }
+                        catch(e: Exception) {
+
+                        }
+
+                    } }
+                    runBlocking {
+                        launch { withContext(Dispatchers.IO) {
+                            while (job.isActive) {
+                                if (System.currentTimeMillis() - startTime > 500){
+                                    job.cancel()
+                                    throw ArithmeticException("Сan't count. Too big expression.")
+                                }
+                            }
+                        }
+                        }
+                    }
+
+                    // val result = resultNumber.toString()
                     val result = resultNumber.toPlainString()
                     if (result.length > 1029) throw ArithmeticException()
                     binding.resultText.text = result
@@ -302,10 +319,12 @@ class WorkSpaceFragment : Fragment() {
                     //binding.inputText.setSelection(binding.inputText.text.length)
                 }
                 catch(e: ArithmeticException) {
-                    Toast.makeText(activity, "cannot evaluate this expression!", Toast.LENGTH_SHORT).show()
+                    if(e.message == null)
+                        Toast.makeText(activity, "Cannot evaluate this expression!", Toast.LENGTH_SHORT).show()
+                    else Toast.makeText(activity, e.message, Toast.LENGTH_SHORT).show()
                 }
                 catch(e: Exception) {
-                    Toast.makeText(activity, "invalid expression!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(activity, "Invalid expression!", Toast.LENGTH_SHORT).show()
                 }
             }
             else if (button == "switch_mode") {
